@@ -4,14 +4,13 @@
     <div v-if="error">
       {{ error }}
     </div>
-    <div v-if="posts.length">
+    <div v-if="posts.length" class="layout">
       <PostList v-if="showPosts" :posts="posts" />
+      <TagCloud :posts="posts" />
     </div>
     <div v-else>
       <Spinner />
     </div>
-    <button @click="showPosts = !showPosts">toggle posts</button>
-    <button @click="posts.pop()">del a post</button>
   </div>
 </template>
 
@@ -19,6 +18,8 @@
 import PostList from "../components/PostList.vue";
 import getPosts from "../composables/getPosts";
 import Spinner from "../components/Spinner.vue";
+import TagCloud from "../components/TagCloud.vue";
+
 import { ref } from "@vue/reactivity";
 
 export default {
@@ -26,6 +27,7 @@ export default {
   components: {
     PostList,
     Spinner,
+    TagCloud,
   },
 
   setup() {
@@ -44,5 +46,11 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
 }
 </style>
