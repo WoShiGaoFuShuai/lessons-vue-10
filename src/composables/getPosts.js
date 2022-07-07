@@ -16,7 +16,6 @@ import { ref } from "@vue/reactivity";
       posts.value = await data.json();
     } catch (err) {
       error.value = err.message;
-      console.log(error.value);
     }
   };
 

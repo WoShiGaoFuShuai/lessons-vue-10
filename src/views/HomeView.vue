@@ -31,6 +31,7 @@ export default {
   setup() {
     const { posts, error, load } = getPosts();
     load();
+
     const showPosts = ref(true);
 
     return { posts, showPosts, error };
